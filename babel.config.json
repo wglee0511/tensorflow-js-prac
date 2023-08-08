@@ -1,0 +1,19 @@
+{
+  "presets": ["@babel/preset-env", "@babel/preset-typescript"],
+  "plugins": [
+    [
+      "babel-plugin-root-import",
+      {
+        "rootPathSuffix": "./src",
+        "rootPathPrefix": "@/"
+      }
+    ],
+    ["@babel/plugin-proposal-optional-chaining"],
+    "react-native-reanimated/plugin"
+  ],
+  "env": {
+    "production": {
+      "plugins": ["transform-remove-console"]
+    }
+  }
+}
