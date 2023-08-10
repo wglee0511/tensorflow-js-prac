@@ -6,7 +6,7 @@ import { Tensor, Tensor1D, Tensor2D } from '@tensorflow/tfjs';
 
 export const downloadTrain = async () => {
   await DownloadModel.fit(downLoadTrainTensors.sizeMB, downLoadTrainTensors.timeSec, {
-    epochs: 1000,
+    epochs: 200,
   });
   const evaluateModel = DownloadModel.evaluate(downLoadTestTensors.sizeMB, downLoadTestTensors.timeSec) as Tensor;
   evaluateModel.print();

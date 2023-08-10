@@ -1,5 +1,8 @@
+import { BostonHousingPriceDataSet } from '@/data/BostonHousingPrice';
 import { downloadTrain } from './src';
 
-downloadTrain();
+//downloadTrain();
+const bostonDataset = new BostonHousingPriceDataSet();
+bostonDataset.loadData();
 
 export {};
