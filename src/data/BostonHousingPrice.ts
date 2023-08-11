@@ -49,13 +49,13 @@ export const loadCsv = async (filename: string) => {
   }
 };
 
-type DataSet = Number[][];
+export type BostonHousingDataSet = Number[][];
 
 export class BostonHousingPriceDataSet {
-  public trainFeatures: DataSet | null = null;
-  public trainTarget: DataSet | null = null;
-  public testFeatures: DataSet | null = null;
-  public testTarget: DataSet | null = null;
+  public trainFeatures: BostonHousingDataSet | null = null;
+  public trainTarget: BostonHousingDataSet | null = null;
+  public testFeatures: BostonHousingDataSet | null = null;
+  public testTarget: BostonHousingDataSet | null = null;
 
   get numFeatures() {
     // 데이터를 로드하기 전에 numFetures를 참조하면 에러를 발생시킵니다.
@@ -73,10 +73,10 @@ export class BostonHousingPriceDataSet {
       loadCsv(TEST_TARGET_FN),
     ]);
 
-    this.trainFeatures = trainFeatures as DataSet;
-    this.trainTarget = trainTarget as DataSet;
-    this.testFeatures = testFeatures as DataSet;
-    this.testTarget = testTarget as DataSet;
+    this.trainFeatures = trainFeatures as BostonHousingDataSet;
+    this.trainTarget = trainTarget as BostonHousingDataSet;
+    this.testFeatures = testFeatures as BostonHousingDataSet;
+    this.testTarget = testTarget as BostonHousingDataSet;
 
     shuffle(this.trainFeatures, this.trainTarget);
     shuffle(this.testFeatures, this.testTarget);
