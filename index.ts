@@ -1,6 +1,7 @@
-import { bostonHousingTrain, downloadTrain } from './src';
+import { bostonHousingTrain, downloadTrain, websitePhishingTrain } from './src';
 
 // downloadTrain();
-bostonHousingTrain();
+// bostonHousingTrain();
+websitePhishingTrain();
 
 export {};
