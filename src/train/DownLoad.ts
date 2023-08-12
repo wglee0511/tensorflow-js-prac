@@ -1,14 +1,24 @@
-import { downLoadTestTensors, downLoadTrainTensors } from '@/Tensor/DownLoadTensor';
+import {
+  downLoadTestTensors,
+  downLoadTrainTensors,
+} from '@/Tensor/DownLoadTensor';
 import { tf } from '@/constant/globalTf';
 import { DOWNLOAD_TEST_DATA, DOWNLOAD_TRAIN_DATA } from '@/data/DowmLoadData';
 import { DownloadModel } from '@/model/DownLoadModel';
 import { Tensor, Tensor1D, Tensor2D } from '@tensorflow/tfjs';
 
 export const downloadTrain = async () => {
-  await DownloadModel.fit(downLoadTrainTensors.sizeMB, downLoadTrainTensors.timeSec, {
-    epochs: 200,
-  });
-  const evaluateModel = DownloadModel.evaluate(downLoadTestTensors.sizeMB, downLoadTestTensors.timeSec) as Tensor;
+  await DownloadModel.fit(
+    downLoadTrainTensors.sizeMB,
+    downLoadTrainTensors.timeSec,
+    {
+      epochs: 200,
+    },
+  );
+  const evaluateModel = DownloadModel.evaluate(
+    downLoadTestTensors.sizeMB,
+    downLoadTestTensors.timeSec,
+  ) as Tensor;
   evaluateModel.print();
   tf.mean(DOWNLOAD_TRAIN_DATA.timeSec).print();
   tf.mean(tf.abs(tf.sub(DOWNLOAD_TEST_DATA.timeSec, 0.295))).print();

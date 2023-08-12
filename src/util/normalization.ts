@@ -10,6 +10,10 @@ export const determineMeanAndStddev = (data: tf.Tensor) => {
   return { dataMean, dataStd };
 };
 
-export const normalizeTensors = (data: tf.Tensor, dataMean: tf.Tensor, dataStd: tf.Tensor): tf.Tensor => {
+export const normalizeTensors = (
+  data: tf.Tensor,
+  dataMean: tf.Tensor,
+  dataStd: tf.Tensor,
+): tf.Tensor => {
   return data.sub(dataMean).div(dataStd);
 };

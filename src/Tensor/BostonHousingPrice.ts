@@ -18,10 +18,20 @@ export const bostonHousingPriceTensors = ({
   const rawTestFeatures = tf.tensor2d(dataSetTestFeatures);
   const testTarget = tf.tensor2d(dataSetTestTarget);
 
-  let { dataMean: trainDataMean, dataStd: trainDataStd } = determineMeanAndStddev(rawTrainFeatures);
-  let { dataMean: testDataMean, dataStd: testDataStd } = determineMeanAndStddev(rawTestFeatures);
-  const trainFeatures = normalizeTensors(rawTrainFeatures, trainDataMean, trainDataStd);
-  const testFeatures = normalizeTensors(rawTestFeatures, testDataMean, testDataStd);
+  const { dataMean: trainDataMean, dataStd: trainDataStd } =
+    determineMeanAndStddev(rawTrainFeatures);
+  const { dataMean: testDataMean, dataStd: testDataStd } =
+    determineMeanAndStddev(rawTestFeatures);
+  const trainFeatures = normalizeTensors(
+    rawTrainFeatures,
+    trainDataMean,
+    trainDataStd,
+  );
+  const testFeatures = normalizeTensors(
+    rawTestFeatures,
+    testDataMean,
+    testDataStd,
+  );
 
   return {
     trainFeatures,

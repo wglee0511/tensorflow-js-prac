@@ -1,22 +1,24 @@
 import axios from 'axios';
 import Papa from 'papaparse';
 
-const BASE_URL = 'https://storage.googleapis.com/tfjs-examples/multivariate-linear-regression/data/';
+const BASE_URL =
+  'https://storage.googleapis.com/tfjs-examples/multivariate-linear-regression/data/';
 
 const TRAIN_FEATURES_FN = 'train-data.csv';
 const TRAIN_TARGET_FN = 'train-target.csv';
 const TEST_FEATURES_FN = 'test-data.csv';
 const TEST_TARGET_FN = 'test-target.csv';
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const parseCsv = async (data: any) => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     data = data.map((row: any) => {
-      return Object.keys(row).map((key) => parseFloat(row[key]));
+      return Object.keys(row).map(key => parseFloat(row[key]));
     });
     resolve(data);
   });
 };
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const shuffle = (data: any, target: any) => {
   let counter = data.length;
   let temp = 0;
@@ -49,7 +51,7 @@ export const loadCsv = async (filename: string) => {
   }
 };
 
-export type BostonHousingDataSet = Number[][];
+export type BostonHousingDataSet = number[][];
 
 export class BostonHousingPriceDataSet {
   public trainFeatures: BostonHousingDataSet | null = null;
@@ -66,12 +68,13 @@ export class BostonHousingPriceDataSet {
   }
 
   async loadData() {
-    const [trainFeatures, trainTarget, testFeatures, testTarget] = await axios.all([
-      loadCsv(TRAIN_FEATURES_FN),
-      loadCsv(TRAIN_TARGET_FN),
-      loadCsv(TEST_FEATURES_FN),
-      loadCsv(TEST_TARGET_FN),
-    ]);
+    const [trainFeatures, trainTarget, testFeatures, testTarget] =
+      await axios.all([
+        loadCsv(TRAIN_FEATURES_FN),
+        loadCsv(TRAIN_TARGET_FN),
+        loadCsv(TEST_FEATURES_FN),
+        loadCsv(TEST_TARGET_FN),
+      ]);
 
     this.trainFeatures = trainFeatures as BostonHousingDataSet;
     this.trainTarget = trainTarget as BostonHousingDataSet;
