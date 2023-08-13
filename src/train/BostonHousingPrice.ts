@@ -2,10 +2,10 @@ import { bostonHousingPriceTensors } from '@/Tensor/BostonHousingPrice';
 import { BostonHousingPriceDataSet } from '@/data/BostonHousingPrice';
 import {
   // getBostonHousingPriceModel,
-  getBostonHousingPriceModelCallbacks,
   getMultiLayerPerceptronRegressionModelHidden,
 } from '@/model/BostonHousingPrice';
 import { computeBaseline } from '@/util/computeBaseline';
+import { onEpochEnd } from '@/util/epochCallback';
 import { Logs, Tensor } from '@tensorflow/tfjs';
 import { TensorLike2D } from '@tensorflow/tfjs-core/dist/types';
 
@@ -13,7 +13,6 @@ const NUM_EPOCHS = 200;
 const BATCH_SIZE = 40;
 
 export const bostonHousingTrain = async () => {
-  const { onEpochEnd } = getBostonHousingPriceModelCallbacks();
   const bostonHousingDataSet = new BostonHousingPriceDataSet();
   const trainLogs: Logs[] = [];
 

@@ -63,7 +63,6 @@ export class WebsitePhishingDataSet {
     const dataShape: [number, number] = [this.trainSize, this.numFeatures];
     const trainData = Float32Array.from(flatten(this.trainFeatures));
     const trainTarget = Float32Array.from(flatten(this.trainTarget));
-
     return {
       data: tf.tensor2d(trainData, dataShape),
       target: tf.tensor1d(trainTarget),
