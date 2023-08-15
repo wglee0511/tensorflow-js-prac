@@ -43,3 +43,12 @@ export const loadCsv = async (baseUrl: string, filename: string) => {
     console.log('loadCsv error: ', error);
   }
 };
+
+export const getApiData = async (baseUrl: string) => {
+  try {
+    const data = await axios.get(baseUrl);
+    console.log('data: ', data);
+  } catch (error) {
+    console.log('getApiData error: ', error);
+  }
+};

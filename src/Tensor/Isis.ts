@@ -28,9 +28,6 @@ export const getIrisTensors = ({
   const xs = tf.tensor2d(shuffledData, [numExamples, xDims]);
   const ys = tf.oneHot(tf.tensor1d(shuffledTarget).toInt(), IRIS_NUM_CLASSES);
 
-  xs.print();
-  ys.print();
-
   const xTrain = xs.slice([0, 0], [numTrainExamples, xDims]);
   const xTest = xs.slice([numTrainExamples, 0], [numTestExamples, xDims]);
   const yTrain = ys.slice([0, 0], [numTrainExamples, IRIS_NUM_CLASSES]);

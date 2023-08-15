@@ -1,9 +1,9 @@
 import { tf } from '@/constant/globalTf';
 import { getIrisData } from '@/data/Iris';
-import { Tensor, layers } from '@tensorflow/tfjs';
+import { layers } from '@tensorflow/tfjs';
 
-export const getIrisModel = () => {
-  const { tfYTests, tfXTests, tfXTrains, tfYTrains } = getIrisData(0.15);
+export const getIrisModel = (testSplit: number) => {
+  const { tfXTrains } = getIrisData(testSplit);
 
   const model = tf.sequential();
 
