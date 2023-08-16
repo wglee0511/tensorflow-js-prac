@@ -13,11 +13,7 @@ export const determineMeanAndStddev = (data: tf.Tensor) => {
   return { dataMean, dataStd };
 };
 
-export const normalizeTensors = (
-  data: tf.Tensor,
-  dataMean: tf.Tensor,
-  dataStd: tf.Tensor,
-): tf.Tensor => {
+export const normalizeTensors = (data: tf.Tensor, dataMean: tf.Tensor, dataStd: tf.Tensor): tf.Tensor => {
   return data.sub(dataMean).div(dataStd);
 };
 
@@ -37,7 +33,7 @@ export const normalizeDataset = ({
   let vectorStddev: number;
 
   for (let i = 0; i < numFeatures; i++) {
-    const vector: Vector = map(data, row => {
+    const vector: Vector = map(data, (row) => {
       return row[i];
     });
 

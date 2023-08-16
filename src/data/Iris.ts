@@ -3,15 +3,10 @@ import { tf } from '@/constant/globalTf';
 import { Tensor } from '@tensorflow/tfjs';
 import { forEach } from 'lodash';
 
-export const IRIS_CLASSES = [
-  'Iris-setosa',
-  'Iris-versicolor',
-  'Iris-virginica',
-];
+export const IRIS_CLASSES = ['Iris-setosa', 'Iris-versicolor', 'Iris-virginica'];
 export const IRIS_NUM_CLASSES = IRIS_CLASSES.length;
 
-export const HOSTED_MODEL_JSON_URL =
-  'https://storage.googleapis.com/tfjs-models/tfjs/iris_v1/model.json';
+export const HOSTED_MODEL_JSON_URL = 'https://storage.googleapis.com/tfjs-models/tfjs/iris_v1/model.json';
 
 // 붓꽃 데이터. 데이터 소스:
 //   https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data
@@ -194,7 +189,7 @@ export const getIrisData = (
       targetByClass.push([]);
     });
 
-    forEach(IRIS_DATA, item => {
+    forEach(IRIS_DATA, (item) => {
       const target = item[item.length - 1];
       const data = item.slice(0, item.length - 1);
       dataByClass[target].push(data);

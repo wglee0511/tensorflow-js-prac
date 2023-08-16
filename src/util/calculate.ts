@@ -1,12 +1,8 @@
 import { map, meanBy } from 'lodash';
 import { Vector } from './type';
 
-export const normalizeVector = (
-  vector: Vector,
-  vectorMean: number,
-  vectorStddev: number,
-) => {
-  return map(vector, x => (x - vectorMean) / vectorStddev);
+export const normalizeVector = (vector: Vector, vectorMean: number, vectorStddev: number) => {
+  return map(vector, (x) => (x - vectorMean) / vectorStddev);
 };
 
 export const stddev = (vector: Vector) => {

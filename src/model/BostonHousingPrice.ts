@@ -1,11 +1,7 @@
 import { LEARNING_RATE } from '@/constant/constant';
 import { tf } from '@/constant/globalTf';
 
-export const getBostonHousingPriceModel = ({
-  numFeatures = 0,
-}: {
-  numFeatures: number;
-}) => {
+export const getBostonHousingPriceModel = ({ numFeatures = 0 }: { numFeatures: number }) => {
   const model = tf.sequential();
   model.add(tf.layers.dense({ inputShape: [numFeatures], units: 1 }));
   model.compile({
@@ -16,11 +12,7 @@ export const getBostonHousingPriceModel = ({
   return model;
 };
 
-export const getMultiLayerPerceptronRegressionModelHidden = ({
-  numFeatures = 0,
-}: {
-  numFeatures: number;
-}) => {
+export const getMultiLayerPerceptronRegressionModelHidden = ({ numFeatures = 0 }: { numFeatures: number }) => {
   const model = tf.sequential();
 
   model.add(

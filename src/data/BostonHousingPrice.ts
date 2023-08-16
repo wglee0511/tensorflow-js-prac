@@ -1,8 +1,7 @@
 import { loadCsv, shuffle } from '@/util/loadData';
 import axios from 'axios';
 
-const BASE_URL =
-  'https://storage.googleapis.com/tfjs-examples/multivariate-linear-regression/data/';
+const BASE_URL = 'https://storage.googleapis.com/tfjs-examples/multivariate-linear-regression/data/';
 
 const TRAIN_FEATURES_FN = 'train-data.csv';
 const TRAIN_TARGET_FN = 'train-target.csv';
@@ -26,13 +25,12 @@ export class BostonHousingPriceDataSet {
   }
 
   async loadData() {
-    const [trainFeatures, trainTarget, testFeatures, testTarget] =
-      await axios.all([
-        loadCsv(BASE_URL, TRAIN_FEATURES_FN),
-        loadCsv(BASE_URL, TRAIN_TARGET_FN),
-        loadCsv(BASE_URL, TEST_FEATURES_FN),
-        loadCsv(BASE_URL, TEST_TARGET_FN),
-      ]);
+    const [trainFeatures, trainTarget, testFeatures, testTarget] = await axios.all([
+      loadCsv(BASE_URL, TRAIN_FEATURES_FN),
+      loadCsv(BASE_URL, TRAIN_TARGET_FN),
+      loadCsv(BASE_URL, TEST_FEATURES_FN),
+      loadCsv(BASE_URL, TEST_TARGET_FN),
+    ]);
 
     this.trainFeatures = trainFeatures as BostonHousingDataSet;
     this.trainTarget = trainTarget as BostonHousingDataSet;

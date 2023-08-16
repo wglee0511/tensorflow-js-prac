@@ -21,13 +21,12 @@ export const bostonHousingTrain = async () => {
     numFeatures: bostonHousingDataSet.numFeatures,
   });
 
-  const { trainTarget, testTarget, testFeatures, trainFeatures } =
-    bostonHousingPriceTensors({
-      dataSetTestFeatures: bostonHousingDataSet.testFeatures as TensorLike2D,
-      dataSetTestTarget: bostonHousingDataSet.testTarget as TensorLike2D,
-      dataSetTrainFeatures: bostonHousingDataSet.trainFeatures as TensorLike2D,
-      dataSetTrainTarget: bostonHousingDataSet.trainTarget as TensorLike2D,
-    });
+  const { trainTarget, testTarget, testFeatures, trainFeatures } = bostonHousingPriceTensors({
+    dataSetTestFeatures: bostonHousingDataSet.testFeatures as TensorLike2D,
+    dataSetTestTarget: bostonHousingDataSet.testTarget as TensorLike2D,
+    dataSetTrainFeatures: bostonHousingDataSet.trainFeatures as TensorLike2D,
+    dataSetTrainTarget: bostonHousingDataSet.trainTarget as TensorLike2D,
+  });
 
   await bostonHousingModel.fit(trainFeatures as Tensor, trainTarget as Tensor, {
     batchSize: BATCH_SIZE,
@@ -52,13 +51,9 @@ export const bostonHousingTrain = async () => {
 
   console.log('평가 시작 ==================================');
 
-  const bostonHousingPriceResult = bostonHousingModel.evaluate(
-    testFeatures,
-    testTarget,
-    {
-      batchSize: BATCH_SIZE,
-    },
-  ) as Tensor;
+  const bostonHousingPriceResult = bostonHousingModel.evaluate(testFeatures, testTarget, {
+    batchSize: BATCH_SIZE,
+  }) as Tensor;
 
   const testLoss = bostonHousingPriceResult.dataSync()[0];
   const trainLoss = trainLogs[trainLogs.length - 1].loss;

@@ -27,13 +27,12 @@ export class WebsitePhishingDataSet {
   public NUM_CLASSES: number = 2;
 
   async loadData() {
-    const [trainFeatures, trainTarget, testFeatures, testTarget] =
-      await axios.all([
-        loadCsv(BASE_URL, TRAIN_DATA),
-        loadCsv(BASE_URL, TRAIN_TARGET),
-        loadCsv(BASE_URL, TEST_DATA),
-        loadCsv(BASE_URL, TEST_TARGET),
-      ]);
+    const [trainFeatures, trainTarget, testFeatures, testTarget] = await axios.all([
+      loadCsv(BASE_URL, TRAIN_DATA),
+      loadCsv(BASE_URL, TRAIN_TARGET),
+      loadCsv(BASE_URL, TEST_DATA),
+      loadCsv(BASE_URL, TEST_TARGET),
+    ]);
 
     const {
       data: normalizedTrainFeatures,

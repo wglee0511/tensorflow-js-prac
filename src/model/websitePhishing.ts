@@ -1,10 +1,6 @@
 import { tf } from '@/constant/globalTf';
 
-export const getWebsitePhishingModel = ({
-  numFeatures,
-}: {
-  numFeatures: number;
-}) => {
+export const getWebsitePhishingModel = ({ numFeatures }: { numFeatures: number }) => {
   const model = tf.sequential();
 
   model.add(

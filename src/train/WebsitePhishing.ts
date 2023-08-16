@@ -12,10 +12,8 @@ export const websitePhishingTrain = async () => {
 
   const trainLogs: Logs[] = [];
 
-  const { data: trainData, target: trainTarget } =
-    websitePhishingDataSet.getTrainData();
-  const { data: testData, target: testTarget } =
-    websitePhishingDataSet.getTestData();
+  const { data: trainData, target: trainTarget } = websitePhishingDataSet.getTrainData();
+  const { data: testData, target: testTarget } = websitePhishingDataSet.getTestData();
 
   const model = getWebsitePhishingModel({
     numFeatures: websitePhishingDataSet.numFeatures,
