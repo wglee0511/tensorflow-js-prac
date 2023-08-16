@@ -3,10 +3,10 @@ import Papa from 'papaparse';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const parseCsv = async (data: any) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     data = data.map((row: any) => {
-      return Object.keys(row).map(key => parseFloat(row[key]));
+      return Object.keys(row).map((key) => parseFloat(row[key]));
     });
     resolve(data);
   });
@@ -47,7 +47,8 @@ export const loadCsv = async (baseUrl: string, filename: string) => {
 export const getApiData = async (baseUrl: string) => {
   try {
     const data = await axios.get(baseUrl);
-    console.log('data: ', data);
+
+    return data;
   } catch (error) {
     console.log('getApiData error: ', error);
   }

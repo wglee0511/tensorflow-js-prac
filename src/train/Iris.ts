@@ -1,7 +1,6 @@
 import { tf } from '@/constant/globalTf';
 import { HOSTED_MODEL_JSON_URL, IRIS_CLASSES, getIrisData } from '@/data/Iris';
 import { getIrisModel } from '@/model/Iris';
-import { getApiData } from '@/util/loadData';
 import { Tensor } from '@tensorflow/tfjs';
 
 export const irisTrain = async () => {
@@ -31,8 +30,16 @@ export const irisTrain = async () => {
     return IRIS_CLASSES[winnerValueIndex];
   });
 
-  const ss = await getApiData(HOSTED_MODEL_JSON_URL);
-  console.log('ss: ', ss);
-
   console.log('입력값에 대한 예측 종류 🌸 : ', predictResult);
+
+  const trainedModel = await tf.loadLayersModel(HOSTED_MODEL_JSON_URL);
+
+  const trainedResult = tf.tidy(() => {
+    const inputTensorData = tf.tensor2d([inputData], [1, 4]);
+    const predictTensorData = trainedModel.predict(inputTensorData) as Tensor;
+    const winnerValueIndex = predictTensorData.argMax(-1).dataSync()[0];
+
+    return IRIS_CLASSES[winnerValueIndex];
+  });
+  console.log('훈련된 값에 대한 예측 종류 🍯 : ', trainedResult);
 };

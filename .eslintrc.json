@@ -20,14 +20,16 @@
     "prettier/prettier": [
       "error",
       {
-        "singleQuote": true,
-        "semi": true,
-        "useTaps": true,
+        "printWidth": 120,
         "tabWidth": 2,
+        "singleQuote": true,
         "trailingComma": "all",
-        "printWidth": 80,
+        "semi": true,
+        "useTabs": false,
+        "arrowParens": "always",
+        "endOfLine": "auto",
         "bracketSpacing": true,
-        "arrowParens": "avoid"
+        "bracketLine": true
       }
     ]
   }
